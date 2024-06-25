@@ -2,6 +2,7 @@
 # Apenas mais um PDF Reader
 
 By [Marco Aurélio Oliveira](https://maurelio.com.br)
+
 Modificado de https://github.com/pvginkel/PdfiumViewer, de Pieter van Ginkel (https://github.com/pvginkel)
 
 Este projeto não tem nada de especial. Eu apenas queria ter um leitor de arquivos PDF RÁPIDO E SIMPLES. Então modifiquei o projeto do van Ginkel e adicionei algumas coisas que eu queria, além de modificar a interface de usuário, também ao meu gosto.
@@ -12,14 +13,14 @@ Além disso, migrei quase todo o código da aplicação principal para dentro da
 
 - Crie um novo projeto Windows Forms;
 - Escolha um par de arquivos `pdfium.dll` e `PDFiumMMG.dll`, a seu gosto;
->*Lembre-se de que podem ser "Release" ou "Debug", de 32 ou 64 bits.*
-- Adicione `pdfium.dll` ao projeto clicando com o botão direito sobre o projeto na janela "Solution Explorer" e escolhendo Add > Existent Item.
+>*Lembre-se de que podem ser "Release" ou "Debug", de 32-bit ou 64-bit.*
+- Adicione `pdfium.dll` ao projeto clicando com o botão direito sobre o projeto na janela `Solution Explorer` e escolhendo `Add > Existent Item`.
 >*O arquivo será copiado para a pasta raiz do projeto. Essa é a forma mais prática de fazer o Visual Studio copiá-lo para a mesma pasta que o executável quando o aplicativo for compilado.*
-- Na janela "Solution Explorer" sobre `pdfium.dll`;
->*A janela "Propriedades" irá exibir os atributos do arquivo.*
-- Defina a propriedade "Copy to Output Directory" como "Copy always";
-- Na janela "Solution Explorer", clique com o botão direito do mouse e selecione Add > Reference;
-- Na janela "Reference Manager", clique no botão `Browse` e procure o arquiv `PDFiumMMG.dll` e o selecione.
+- Na janela `Solution Explorer` sobre `pdfium.dll`;
+>*A janela `Propriedades` irá exibir os atributos do arquivo.*
+- Defina a propriedade `Copy to Output Directory` como `Copy always`;
+- Na janela `Solution Explorer`, clique em `References` ou `Dependencies` com o botão direito do mouse e selecione `Add > Reference`;
+- Na janela `Reference Manager", clique no botão `Browse`, procure o arquivo `PDFiumMMG.dll`, e selecione este arquivo.
 
 Pronto! O projeto está preparado para executar o PDF Reader, com mais algumas poucas linhas de código, conforme mostrado a seguir:
 
