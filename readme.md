@@ -3,7 +3,7 @@
 
 By [Marco Aurélio Oliveira](https://maurelio.com.br)
 
-Modified from https://github.com/pvginkel/PdfiumViewer, by [Pieter van Ginkel](https://github.com/pvginkel)
+Modified from https://github.com/pvginkel/PdfiumViewer
 
 This project isn't anything special. I just wanted a FAST AND SIMPLE PDF READER, which is not easy to find nowadays. So, I modified van Ginkel's project and added a few things I wanted, plus tweaked the user interface to my taste.
 
@@ -38,11 +38,12 @@ public partial class MainForm : Form
         pdfViewer.Dock = DockStyle.Fill;
         Controls.Add(pdfViewer);
         InitViewer();
+        Disposed += (s, e) => pdfViewer.Document?.Dispose();
     }
 
     private void InitViewer()
     {
-        // Set the options to be displayed to the user
+        // Set what is to be displayed to the user
         PDFPermissions p = new PDFPermissions
         {
             MainMenuVisible = true,
@@ -60,7 +61,6 @@ public partial class MainForm : Form
         Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Viewer";
         pdfViewer.Init(p, setDocumentName);
 
-        
         // Here we read the initialization data
         IniFile iniFile;
         if (File.Exists(this.iniFilePath))
@@ -68,6 +68,7 @@ public partial class MainForm : Form
             StreamReader xmlStream = new StreamReader(this.iniFilePath);
             XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
             iniFile = (IniFile)serializer.Deserialize(xmlStream);
+            xmlStream.Close();
         }
         else
         {
@@ -78,13 +79,13 @@ public partial class MainForm : Form
 
     private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-        
-        // Here we write the initialization data
         IniFile iniFile = this.pdfViewer.IniFile;
 
+        // Here we write the initialization data
         StreamWriter xmlStream = new StreamWriter(this.iniFilePath);
         XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
         serializer.Serialize(xmlStream, iniFile);
+        xmlStream.Close();
     }
 }
 ```

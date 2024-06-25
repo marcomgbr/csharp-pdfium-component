@@ -813,5 +813,19 @@ namespace PdfiumViewer
             getPdfTextButton.Checked = false;
             this.activeViewer = ActiveViewer.PDF_RENDERER;
         }
+
+        private void aboutMenu_Click(object sender, EventArgs e)
+        {
+            string target = "http://maurelio.com.br";
+            try
+            {
+                System.Diagnostics.Process.Start(target);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Marco Aurélio Oliveira\nhttps://maurelio.com.br");
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 }

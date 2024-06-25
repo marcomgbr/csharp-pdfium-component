@@ -78,6 +78,7 @@ namespace PdfiumViewer
             this.file_recentDocuments = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.view_showRangeOfPages = new System.Windows.Forms.ToolStripMenuItem();
+            this.view_showBookmarks = new System.Windows.Forms.ToolStripMenuItem();
             this.editMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.edit_find = new System.Windows.Forms.ToolStripMenuItem();
             this.edit_menuSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -104,7 +105,6 @@ namespace PdfiumViewer
             this.bookmarksView = new PdfiumViewer.NativeTreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pdfRenderer = new PdfiumViewer.PdfRenderer();
-            this.view_showBookmarks = new System.Windows.Forms.ToolStripMenuItem();
             this.mainToolBar.SuspendLayout();
             this.mainStatusBar.SuspendLayout();
             this.mainMenu.SuspendLayout();
@@ -444,6 +444,13 @@ namespace PdfiumViewer
             resources.ApplyResources(this.view_showRangeOfPages, "view_showRangeOfPages");
             this.view_showRangeOfPages.Click += new System.EventHandler(this.view_showRangeOfPages_Click);
             // 
+            // view_showBookmarks
+            // 
+            this.view_showBookmarks.CheckOnClick = true;
+            this.view_showBookmarks.Name = "view_showBookmarks";
+            resources.ApplyResources(this.view_showBookmarks, "view_showBookmarks");
+            this.view_showBookmarks.Click += new System.EventHandler(this.view_showBookmarks_Click);
+            // 
             // editMenu
             // 
             this.editMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -550,6 +557,7 @@ namespace PdfiumViewer
             // 
             this.aboutMenu.Name = "aboutMenu";
             resources.ApplyResources(this.aboutMenu, "aboutMenu");
+            this.aboutMenu.Click += new System.EventHandler(this.aboutMenu_Click);
             // 
             // notifyIcon1
             // 
@@ -646,13 +654,6 @@ namespace PdfiumViewer
             this.pdfRenderer.Click += new System.EventHandler(this.pdfRenderer_Click);
             this.pdfRenderer.MouseLeave += new System.EventHandler(this.renderer_MouseLeave);
             this.pdfRenderer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.renderer_MouseMove);
-            // 
-            // view_showBookmarks
-            // 
-            this.view_showBookmarks.CheckOnClick = true;
-            this.view_showBookmarks.Name = "view_showBookmarks";
-            resources.ApplyResources(this.view_showBookmarks, "view_showBookmarks");
-            this.view_showBookmarks.Click += new System.EventHandler(this.view_showBookmarks_Click);
             // 
             // PdfViewer
             // 

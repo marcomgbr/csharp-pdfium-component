@@ -26,10 +26,12 @@ namespace PDFiumApplication
             pdfViewer.Dock = DockStyle.Fill;
             Controls.Add(pdfViewer);
             InitViewer();
+            Disposed += (s, e) => pdfViewer.Document?.Dispose();
         }
 
         private void InitViewer()
         {
+            // Set what is to be displayed to the user
             PDFPermissions p = new PDFPermissions
             {
                 MainMenuVisible = true,
@@ -43,15 +45,18 @@ namespace PDFiumApplication
                 EditEnabled = true
             };
 
+            // Here's a little function pointer to update the title bar
             Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Viewer";
             pdfViewer.Init(p, setDocumentName);
 
+            // Here we read the initialization data
             IniFile iniFile;
             if (File.Exists(this.iniFilePath))
             {
                 StreamReader xmlStream = new StreamReader(this.iniFilePath);
                 XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
                 iniFile = (IniFile)serializer.Deserialize(xmlStream);
+                xmlStream.Close();
             }
             else
             {
@@ -64,9 +69,11 @@ namespace PDFiumApplication
         {
             IniFile iniFile = this.pdfViewer.IniFile;
 
+            // Here we write the initialization data
             StreamWriter xmlStream = new StreamWriter(this.iniFilePath);
             XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
             serializer.Serialize(xmlStream, iniFile);
+            xmlStream.Close();
         }
     }
 }
