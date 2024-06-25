@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5813D79E-9D45-4B88-B459-765CF992423C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PDFiumMMG</RootNamespace>
+    <AssemblyName>PDFiumMMG</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BasicRTFViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BasicRTFViewer.designer.cs">
+      <DependentUpon>BasicRTFViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CleanDarkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CleanDarkForm.Designer.cs">
+      <DependentUpon>CleanDarkForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConstantOfTypeString.cs" />
+    <Compile Include="CustomScrollControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ExportBitmapsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExportBitmapsForm.Designer.cs">
+      <DependentUpon>ExportBitmapsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FigurativeFileNames.cs" />
+    <Compile Include="HitTest.cs" />
+    <Compile Include="IniFile.cs" />
+    <Compile Include="IPdfDocument.cs" />
+    <Compile Include="IPdfMarker.cs" />
+    <Compile Include="LinkClickEventHandler.cs" />
+    <Compile Include="ManyPagesToOneForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManyPagesToOneForm.Designer.cs">
+      <DependentUpon>ManyPagesToOneForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MouseWheelMode.cs" />
+    <Compile Include="NativeMethods.cs" />
+    <Compile Include="NativeMethods.Pdfium.cs" />
+    <Compile Include="NativeTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PageRangeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PageRangeForm.Designer.cs">
+      <DependentUpon>PageRangeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PanningZoomingScrollControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PasswordForm.Designer.cs">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PdfBookmarkCollection.cs" />
+    <Compile Include="PdfDocument.cs" />
+    <Compile Include="PdfError.cs" />
+    <Compile Include="PdfException.cs" />
+    <Compile Include="PdfFile.cs" />
+    <Compile Include="PdfInformation.cs" />
+    <Compile Include="PdfLibrary.cs" />
+    <Compile Include="PdfMarker.cs" />
+    <Compile Include="PdfMarkerCollection.cs" />
+    <Compile Include="PdfMatch.cs" />
+    <Compile Include="PdfMatches.cs" />
+    <Compile Include="PdfPageLink.cs" />
+    <Compile Include="PdfPageLinks.cs" />
+    <Compile Include="PDFPermissions.cs" />
+    <Compile Include="PdfPoint.cs" />
+    <Compile Include="PdfPrintDocument.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PdfPrintMode.cs" />
+    <Compile Include="PdfPrintMultiplePages.cs" />
+    <Compile Include="PdfPrintSettings.cs" />
+    <Compile Include="PdfRangeDocument.cs" />
+    <Compile Include="PdfRectangle.cs" />
+    <Compile Include="PdfRenderer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PdfRenderFlags.cs" />
+    <Compile Include="PdfRotation.cs" />
+    <Compile Include="PDFSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDFSearchForm.Designer.cs">
+      <DependentUpon>PDFSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PdfSearchManager.cs" />
+    <Compile Include="PdfTextSpan.cs" />
+    <Compile Include="PdfViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PdfViewer.Designer.cs">
+      <DependentUpon>PdfViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PdfViewerZoomMode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RotationStack.cs" />
+    <Compile Include="RTFBuilder.cs" />
+    <Compile Include="RTFConstants.cs" />
+    <Compile Include="RTFHeader.cs" />
+    <Compile Include="RTFPage.cs" />
+    <Compile Include="RTFSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RTFSearchForm.Designer.cs">
+      <DependentUpon>RTFSearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScrollAction.cs" />
+    <Compile Include="SetCursorEventHandler.cs" />
+    <Compile Include="ShadeBorder.cs" />
+    <Compile Include="StreamManager.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="x64\" />
+    <Folder Include="x86\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="lib\Pdfium\x64\pdfium.dll">
+      <Link>x64\pdfium.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="lib\Pdfium\x86\pdfium.dll">
+      <Link>x86\pdfium.dll</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="pan.cur">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>PdfiumViewer.Properties</CustomToolNamespace>
+    </Resource>
+    <Content Include="Resources\arrow-placeholder.png" />
+    <Content Include="Resources\arrow.png" />
+    <Content Include="Resources\bookmarks.png" />
+    <Content Include="Resources\close-form.png" />
+    <Content Include="Resources\close.png" />
+    <Content Include="Resources\eddie-placeholder.png" />
+    <Content Include="Resources\eddie.png" />
+    <Content Include="Resources\eddie128.png" />
+    <Content Include="Resources\eddie16.png" />
+    <Content Include="Resources\eddie32.png" />
+    <Content Include="Resources\eddie64.png" />
+    <Content Include="Resources\error.png" />
+    <Content Include="Resources\find-next.png" />
+    <Content Include="Resources\find-previous.png" />
+    <Content Include="Resources\find.png" />
+    <Content Include="Resources\fit_h.png" />
+    <Content Include="Resources\fit_w.png" />
+    <Content Include="Resources\help.png" />
+    <Content Include="Resources\highlight.png" />
+    <Content Include="Resources\main-menu.png" />
+    <Content Include="Resources\match-case.png" />
+    <Content Include="Resources\match-whole-word.png" />
+    <Content Include="Resources\open.png" />
+    <Content Include="Resources\page_next.png" />
+    <Content Include="Resources\page_previous.png" />
+    <Content Include="Resources\printer.png" />
+    <Content Include="Resources\rotate_l.png" />
+    <Content Include="Resources\rotate_r.png" />
+    <Content Include="Resources\save.png" />
+    <Content Include="Resources\select-text.png" />
+    <Content Include="Resources\ShadeBorder-E.png" />
+    <Content Include="Resources\ShadeBorder-N.png" />
+    <Content Include="Resources\ShadeBorder-NE.png" />
+    <Content Include="Resources\ShadeBorder-NW.png" />
+    <Content Include="Resources\ShadeBorder-S.png" />
+    <Content Include="Resources\ShadeBorder-SE.png" />
+    <Content Include="Resources\ShadeBorder-SW.png" />
+    <Content Include="Resources\ShadeBorder-W.png" />
+    <Content Include="Resources\zoom_in.png" />
+    <Content Include="Resources\zoom_out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="BasicRTFViewer.resx">
+      <DependentUpon>BasicRTFViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CleanDarkForm.resx">
+      <DependentUpon>CleanDarkForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExportBitmapsForm.resx">
+      <DependentUpon>ExportBitmapsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManyPagesToOneForm.resx">
+      <DependentUpon>ManyPagesToOneForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageRangeForm.resx">
+      <DependentUpon>PageRangeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PasswordForm.resx">
+      <DependentUpon>PasswordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PDFSearchForm.resx">
+      <DependentUpon>PDFSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PdfViewer.resx">
+      <DependentUpon>PdfViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>PdfiumViewer.Properties</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RTFSearchForm.resx">
+      <DependentUpon>RTFSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
