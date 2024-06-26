@@ -42,6 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BasicRTFViewer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,6 +186,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <CustomToolNamespace>PdfiumViewer.Properties</CustomToolNamespace>
     </Resource>
+    <None Include="Resources\about.jpg" />
     <Content Include="Resources\arrow-placeholder.png" />
     <Content Include="Resources\arrow.png" />
     <Content Include="Resources\bookmarks.png" />
@@ -222,6 +229,9 @@
     <Content Include="Resources\zoom_out.png" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BasicRTFViewer.resx">
       <DependentUpon>BasicRTFViewer.cs</DependentUpon>
     </EmbeddedResource>

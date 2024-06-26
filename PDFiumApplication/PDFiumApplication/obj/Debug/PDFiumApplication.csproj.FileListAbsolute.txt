@@ -24,3 +24,4 @@ C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debu
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.csproj.CopyComplete
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.exe
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.pdb
+C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\bin\Debug\PDFiumMMG.pdb

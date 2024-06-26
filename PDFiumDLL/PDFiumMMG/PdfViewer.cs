@@ -8,6 +8,7 @@ using MMG.CustomPresentation.RTF;
 using ApplicationInfo;
 using System.Collections.Generic;
 using System.Linq;
+using PDFiumMMG;
 
 namespace PdfiumViewer
 {
@@ -816,16 +817,8 @@ namespace PdfiumViewer
 
         private void aboutMenu_Click(object sender, EventArgs e)
         {
-            string target = "http://maurelio.com.br";
-            try
-            {
-                System.Diagnostics.Process.Start(target);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Marco Aurélio Oliveira\nhttps://maurelio.com.br");
-                Console.WriteLine(ex.Message);
-            }
+            AboutForm about = new AboutForm();
+            about.ShowDialog();
         }
     }
 }

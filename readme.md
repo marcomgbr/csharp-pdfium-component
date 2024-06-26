@@ -3,7 +3,7 @@
 
 By [Marco Aurélio Oliveira](https://maurelio.com.br)
 
-Modified from https://github.com/pvginkel/PdfiumViewer
+Derived from https://github.com/pvginkel/PdfiumViewer
 
 This project isn't anything special. I just wanted a FAST AND SIMPLE PDF READER, which is not easy to find nowadays. So, I modified van Ginkel's project and added a few things I wanted, plus tweaked the user interface to my taste.
 

@@ -385,6 +385,15 @@ namespace MMG.CustomPresentation.RTF
         #region ==================== TEXT FLOW ====================
 
         /// <summary>
+        /// Add text to document body.
+        /// </summary>
+        public RTFBuilder t(string text)
+        {
+            this.text.Append(text);
+            return this;
+        }
+
+        /// <summary>
         /// Begins a paragraph.
         /// </summary>
         public RTFBuilder p()
@@ -431,15 +440,6 @@ namespace MMG.CustomPresentation.RTF
         public RTFBuilder _p()
         {
             this.text.Append(@"\sb150\par}").Append("\n");
-            return this;
-        }
-
-        /// <summary>
-        /// Add text to document body.
-        /// </summary>
-        public RTFBuilder _(string text)
-        {
-            this.text.Append(text);
             return this;
         }
 

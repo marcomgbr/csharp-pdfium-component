@@ -65,7 +65,7 @@ namespace MMG.CustomPresentation.RTF
 
             foreach (string item in this.lines)
             {
-                b.p(fontSize)._(item)._p();
+                b.p(fontSize).t(item)._p();
             }
 
             this.rtfTextBox.Rtf = b.GetRTFString();
