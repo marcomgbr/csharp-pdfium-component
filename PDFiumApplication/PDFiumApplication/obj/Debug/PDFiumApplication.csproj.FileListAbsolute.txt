@@ -16,6 +16,7 @@ C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\bin\Debu
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\bin\Debug\PDFiumApplication.exe
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\bin\Debug\PDFiumApplication.pdb
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\bin\Debug\PDFiumMMG.dll
+C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\bin\Debug\PDFiumMMG.pdb
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.csproj.AssemblyReference.cache
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.MainForm.resources
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.Properties.Resources.resources
@@ -24,4 +25,3 @@ C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debu
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.csproj.CopyComplete
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.exe
 C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\obj\Debug\PDFiumApplication.pdb
-C:\WORKSPACE\projects-c\PDFiumMarco\PDFiumApplication\PDFiumApplication\bin\Debug\PDFiumMMG.pdb
