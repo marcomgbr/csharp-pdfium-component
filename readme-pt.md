@@ -54,7 +54,7 @@ public MainForm()
 ```
 ### Definir as permissões de usuário
 ```
-PDFPermissions p = new PDFPermissions
+PDFPermissions permissions = new PDFPermissions
 {
     MainMenuVisible = true,
     MainToolBarVisible = true,
@@ -70,7 +70,7 @@ PDFPermissions p = new PDFPermissions
 ### Adicionar função de callback
 ```
 Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Viewer";
-pdfViewer.Init(p, setDocumentName);
+pdfViewer.Init(permissions, setDocumentName);
 ```
 ### Ler arquivo de inicialização
 ```
