@@ -144,14 +144,21 @@ MsgBox.Format()
 ```
 ![Amostra MsgBox](/imgs/msgbox-04.png "Parágrafos, cores e hiperlinks")
 ### Observações
-- O formato RTF não é exatamente equivalente ao HTML. Portanto, a API criada tem comandos diferentes e alguns truques, como:
-  - O header do arquivo RTF já vem pré-definido na API. Coisas como tabelas de cores e fontes não podem ser modificadas.
-  - Quando precisar codificar pedaços de RTF para uni-los em outro ponto do código, utilize a função `pack()`. Esta função é uma *noop*, e serve apenas para completar a tag mais externa, quando esta não for uma função. Exemplo:
+#### Fontes e cores
+O formato RTF não é exatamente equivalente ao HTML. Portanto, a API criada tem funções diferentes e alguns truques, como:
+- O header do arquivo RTF já vem pré-definido na API. Coisas como tabelas de cores e fontes não podem ser modificadas.
+  - São 3 fontes disponíveis:
+    - Sem serifa: Helvetica
+    - Com serifa: Times
+    - Mono-espaçada: Courier
+  - As cores disponíveis são: vermelho, verde, azul, amarelo, preto, branco, ciano, magenta e salmão.
+#### A função `pack()`
+- Quando precisar codificar pedaços de RTF para uni-los em outro ponto do código, utilize a função `pack()`. Esta função é uma *noop*, e serve apenas para completar a última tag de uma sequência, quando esta não for uma função. Exemplo:
 ```
 RTFBuilder rtfBuilder = new RTFBuilder();
 foreach (string item in this.lines)
 {
-    rtfBuilder.p.t(item).ep.pack();
+    rtfBuilder.p.t(item).ep.pack(); // pack não faz nada
 }
 ```
   -
