@@ -14,11 +14,10 @@ Fique à vontade para deixá-lo com a aparência que você quiser.
 ## Resumo das Modificações Realizadas
 - Transferi as funcionalidades da aplicação principal para a DLL.
 - >*Assim, o componente leitor de PDF ficou muito simples de usar. Basta colocar na tela e escrever umas poucas linhas de código.* 
-- Toda a aparência da aplicação foi modificada, destacando-se:
+- Modifiquei toda a aparência da aplicação, incluindo:
   - Remodelagem de todas as telas, com Implementação de herança de formulários.
-  >*Quase todos os formulários derivam de 1 único formulário.*
-  - Reorganização dos menus e painéis de controle.
-  - Novos ícones e facilidades.
+  >*Quase todos os formulários derivam de 1 único formulário agora. Fica muito mais fácil personalizar todos de uma vez.*
+  - Reorganização dos menus e painéis de controle para melhor usabilidade, incluindo novos ícones e facilidades.
   - Mensagens em Rich Text Format (texto formatado).
   >*Facilitam chamar a atenção do usuário com cores e outras formatações.*
   - Lista de documentos abertos recentemente.
@@ -144,3 +143,15 @@ MsgBox.Format()
     .Show();
 ```
 ![Amostra MsgBox](/imgs/msgbox-04.png "Parágrafos, cores e hiperlinks")
+### Observações
+- O formato RTF não é exatamente equivalente ao HTML. Portanto, a API criada tem comandos diferentes e alguns truques, como:
+  - O header do arquivo RTF já vem pré-definido na API. Coisas como tabelas de cores e fontes não podem ser modificadas.
+  - Quando precisar codificar pedaços de RTF para uni-los em outro ponto do código, utilize a função `pack()`. Esta função é uma *noop*, e serve apenas para completar a tag mais externa, quando esta não for uma função. Exemplo:
+```
+RTFBuilder rtfBuilder = new RTFBuilder();
+foreach (string item in this.lines)
+{
+    rtfBuilder.p.t(item).ep.pack();
+}
+```
+  -
