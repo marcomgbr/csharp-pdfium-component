@@ -162,6 +162,8 @@ foreach (string item in this.lines)
 }
 ```
 #### O bug do RichTextBox
-Acima da versão 4.6 do .NET Framework o componente RichTextBox não gera o evento click de um link que esteja muito perto do fim do texto.
+Acima da versão 4.6 do .NET Framework o componente RichTextBox não gera o evento click de um *link* que esteja muito perto do fim do texto.
 
-Para o link funcionar é preciso haver um certo número de caracteres após o link. Portanto, MsgBox calcula o número de caracteres necessários e insere espaços em branco ao final de cada mensagem que contenha algum hiperlink (`href`).
+Para o *link* funcionar é preciso haver um certo número de caracteres após o fim do *link*. Este número de caracteres é a soma do total de caracteres de cada link existente no texto. (acreditem, eu testei)
+
+Portanto, a cada link inserido com `href`, o RTFBuilder adiciona o número de caracteres a um contador. Ao exibir a mensagem, MsgBox lê esse contador e insere espaços em branco ao final da mensagem, se ela contiver algum hiperlink.
