@@ -91,8 +91,6 @@ pdfViewer.IniFile = iniFile;
 ### Salvar arquivo de inicialização
 ```
 IniFile iniFile = this.pdfViewer.IniFile;
-
-// Here we write the initialization data
 StreamWriter xmlStream = new StreamWriter(this.iniFilePath);
 XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
 serializer.Serialize(xmlStream, iniFile);
@@ -101,7 +99,9 @@ xmlStream.Close();
 >*Grave o arquivo de inicilização no formato que você preferir. Neste exemplo eu usei XML porque não queria mais DLLs incluídas no projeto para utilizar JSON.*
 
 ## Recurso Adicional: Mensagens em Formato RTF
-Foi desenvolvido um formatador de Rich Text Format (Formato de Texto Rico) e associado a um novo formulário de mensagens que visa substituir o MessageBox padrão do Windows Forms. A implementação tenta imitar ao máximo a sintaxe HTML, como demonstrado a seguir:
+Desenvolvi um formatador de Rich Text Format (Formato de Texto Rico) para usar com um novo formulário de mensagens que visa substituir o MessageBox padrão do Windows Forms.
+
+A implementação busca reproduzir a sintaxe HTML, que é bem mais conhecida do que RTF, como demonstrado a seguir:
 
 ### Usando a sintaxe padrão da MessageBox do Windows Forms
 ```
