@@ -61,11 +61,11 @@ namespace MMG.CustomPresentation.RTF
             RTFBuilder b = new RTFBuilder();
             b.header.page.portrait().width_mm(215.9).height_mm(279.4).leftmargin_mm(13)
                 .rightmargin_mm(13).topmargin_mm(13).bottommargin_mm(13);
-            b.hardbr();
+            b.hardbreak();
 
             foreach (string item in this.lines)
             {
-                b.p(fontSize).t(item)._p();
+                b.pf(fontSize).t(item).ep.pack();
             }
 
             this.rtfTextBox.Rtf = b.GetRTFString();

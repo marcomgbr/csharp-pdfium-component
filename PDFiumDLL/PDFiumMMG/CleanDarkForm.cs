@@ -74,7 +74,7 @@ namespace MMG.FormDecoration
         }
 
         protected Color borderColor = Color.Black;
-        protected Color footerLineColor = Color.Blue;
+        protected Color footerLineColor = Color.LimeGreen;
         protected void CleanDarkForm_Paint(object sender, PaintEventArgs e)
         {
             using (Pen borderPen = new Pen(borderColor, 1))

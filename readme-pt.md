@@ -9,8 +9,21 @@ Este projeto não tem nada de especial. Eu apenas queria ter um leitor de arquiv
 
 Fique à vontade para deixá-lo com a aparência que você quiser.
 
-Além disso, migrei quase todo o código da aplicação principal para dentro da DLL, tornando o componente praticamente completo para inclusão em outras aplicações. O programador tem que seguir poucos passos e escrever poucas linhas de código para colocar o componente funcionando.
+## Resumo das Modificações Realizadas
+- Retiradas as funcionalidades da aplicação principal, incluindo-as na DLL. 
+>*Isso reduz drasticamente a quantidade de código que o programador tem que escrever para usar o componente.*
+- Modificada toda a aparência da aplicação, incluindo:
+  - Novas telas.
+  >*Implementação de herança de formulários.*
+  - Reorganização dos menus e painéis de controle.
+  - Novos ícones e atalhos.
+  - Message Dialogs em Rich Text Format (texto formatado).
+  - Lista de documentos abertos recentemente.
+  - Extração e seleção de texto na tela.
+  - Criação de parâmetros de permissões de uso.
+  >*O programador define quais comandos estarão habilitados para o usuário.*
 
+## Usando o Componente em seu Aplicativo
 1. Crie um novo projeto Windows Forms;
 2. Escolha um par de arquivos `pdfium.dll` e `PDFiumMMG.dll`, a seu gosto;
 >*Lembre-se de que podem ser "Release" ou "Debug", de 32-bit ou 64-bit.*

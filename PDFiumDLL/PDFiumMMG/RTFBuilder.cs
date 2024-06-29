@@ -4,12 +4,16 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MMG.CustomPresentation.RTF
 {
     public class RTFBuilder
     {
         readonly StringBuilder text = new StringBuilder();
+        private Func<string, DialogResult> showMessage;
+
+        private int linksCharsCount = 0;
 
         public RTFHeader header;
         //public RTFTable table;
@@ -20,33 +24,48 @@ namespace MMG.CustomPresentation.RTF
             //this.table = new RTFTable();
         }
 
+        public RTFBuilder(Func<string, DialogResult> showMessage)
+        {
+            this.showMessage = showMessage;
+            this.header = new RTFHeader();
+        }
+
         #region ==================== FONT TYPES ====================
-        
+
         /// <summary>
         /// Start font Helvetica.
         /// </summary>
-        public RTFBuilder fhelvetica()
+        public RTFBuilder fhelvetica
         {
-            this.text.Append(@"\f0");
-            return this;
+            get
+            {
+                this.text.Append(@"\f0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Start font Courier.
         /// </summary>
-        public RTFBuilder fcourier()
+        public RTFBuilder fcourier
         {
-            this.text.Append(@"\f1");
-            return this;
+            get
+            {
+                this.text.Append(@"\f1");
+                return this;
+            }
         }
 
         /// <summary>
         /// Start font Times.
         /// </summary>
-        public RTFBuilder ftimes()
+        public RTFBuilder ftimes
         {
-            this.text.Append(@"\f2");
-            return this;
+            get
+            {
+                this.text.Append(@"\f2");
+                return this;
+            }
         }
         #endregion ===================================
 
@@ -64,262 +83,349 @@ namespace MMG.CustomPresentation.RTF
         /// <summary>
         /// End font size.
         /// </summary>
-        public RTFBuilder _fsize()
+        public RTFBuilder efsize
         {
-            this.text.Append(@"}");
-            return this;
+            get
+            {
+                this.text.Append(@"}");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin italics format.
         /// </summary>
-        public RTFBuilder i()
+        public RTFBuilder i
         {
-            this.text.Append(@"\i1");
-            return this;
+            get
+            {
+                this.text.Append(@"\i1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End italics format.
         /// </summary>
-        public RTFBuilder _i()
+        public RTFBuilder ei
         {
-            this.text.Append(@"\i0");
-            return this;
+            get
+            {
+                this.text.Append(@"\i0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin bold text.
         /// </summary>
-        public RTFBuilder b()
+        public RTFBuilder b
         {
-            this.text.Append(@"\b1");
-            return this;
+            get
+            {
+                this.text.Append(@"\b1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End bold text.
         /// </summary>
-        public RTFBuilder _b()
+        public RTFBuilder eb
         {
-            this.text.Append(@"\b0");
-            return this;
+            get
+            {
+                this.text.Append(@"\b0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin small caps.
         /// </summary>
-        public RTFBuilder scaps()
+        public RTFBuilder scaps
         {
-            this.text.Append(@"\scaps1");
-            return this;
+            get
+            {
+                this.text.Append(@"\scaps1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End small caps.
         /// </summary>
-        public RTFBuilder _scaps()
+        public RTFBuilder escaps
         {
-            this.text.Append(@"\scaps0");
-            return this;
+            get
+            {
+                this.text.Append(@"\scaps0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin all caps.
         /// </summary>
-        public RTFBuilder caps()
+        public RTFBuilder caps
         {
-            this.text.Append(@"\caps1");
-            return this;
+            get
+            {
+                this.text.Append(@"\caps1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End all caps.
         /// </summary>
-        public RTFBuilder _caps()
+        public RTFBuilder ecaps
         {
-            this.text.Append(@"\caps0");
-            return this;
+            get
+            {
+                this.text.Append(@"\caps0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Strike through.
         /// </summary>
-        public RTFBuilder strike()
+        public RTFBuilder strike
         {
-            this.text.Append(@"\strike1");
-            return this;
+            get
+            {
+                this.text.Append(@"\strike1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End strike through.
         /// </summary>
-        public RTFBuilder _strike()
+        public RTFBuilder estrike
         {
-            this.text.Append(@"\strike0");
-            return this;
+            get
+            {
+                this.text.Append(@"\strike0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin outline.
         /// </summary>
-        public RTFBuilder outl()
+        public RTFBuilder outl
         {
-            this.text.Append(@"\outl1");
-            return this;
+            get
+            {
+                this.text.Append(@"\outl1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End outline.
         /// </summary>
-        public RTFBuilder _outl()
+        public RTFBuilder eoutl
         {
-            this.text.Append(@"\outl0");
-            return this;
+            get
+            {
+                this.text.Append(@"\outl0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin underline.
         /// </summary>
-        public RTFBuilder u()
+        public RTFBuilder u
         {
-            this.text.Append(@"\ul1");
-            return this;
+            get
+            {
+                this.text.Append(@"\ul1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End underline.
         /// </summary>
-        public RTFBuilder _u()
+        public RTFBuilder eu
         {
-            this.text.Append(@"\ul0");
-            return this;
+            get
+            {
+                this.text.Append(@"\ul0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin double underline.
         /// </summary>
-        public RTFBuilder udbl()
+        public RTFBuilder udbl
         {
-            this.text.Append(@"\uldb1");
-            return this;
+            get
+            {
+                this.text.Append(@"\uldb1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End double underline.
         /// </summary>
-        public RTFBuilder _udbl()
+        public RTFBuilder eudbl
         {
-            this.text.Append(@"\uldb0");
-            return this;
+            get
+            {
+                this.text.Append(@"\uldb0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin thick underline.
         /// </summary>
-        public RTFBuilder uth()
+        public RTFBuilder uth
         {
-            this.text.Append(@"\ulth1");
-            return this;
+            get
+            {
+                this.text.Append(@"\ulth1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End thick underline.
         /// </summary>
-        public RTFBuilder _uth()
+        public RTFBuilder euth
         {
-            this.text.Append(@"\ulth0");
-            return this;
+            get
+            {
+                this.text.Append(@"\ulth0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin underline words only.
         /// </summary>
-        public RTFBuilder uw()
+        public RTFBuilder uw
         {
-            this.text.Append(@"\ulw1");
-            return this;
+            get
+            {
+                this.text.Append(@"\ulw1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End underline words only.
         /// </summary>
-        public RTFBuilder _uw()
+        public RTFBuilder euw
         {
-            this.text.Append(@"\ulw0");
-            return this;
+            get
+            {
+                this.text.Append(@"\ulw0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin wave underline.
         /// </summary>
-        public RTFBuilder uwave()
+        public RTFBuilder uwave
         {
-            this.text.Append(@"\ulwave1");
-            return this;
+            get
+            {
+                this.text.Append(@"\ulwave1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End wave underline.
         /// </summary>
-        public RTFBuilder _uwave()
+        public RTFBuilder euwave
         {
-            this.text.Append(@"\ulwave0");
-            return this;
+            get
+            {
+                this.text.Append(@"\ulwave0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin dotted underline.
         /// </summary>
-        public RTFBuilder ud()
+        public RTFBuilder ud
         {
-            this.text.Append(@"\uld1");
-            return this;
+            get
+            {
+                this.text.Append(@"\uld1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End dotted underline.
         /// </summary>
-        public RTFBuilder _ud()
+        public RTFBuilder eud
         {
-            this.text.Append(@"\uld0");
-            return this;
+            get
+            {
+                this.text.Append(@"\uld0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin dash underline.
         /// </summary>
-        public RTFBuilder udash()
+        public RTFBuilder udash
         {
-            this.text.Append(@"\uldash1");
-            return this;
+            get
+            {
+                this.text.Append(@"\uldash1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End dash underline.
         /// </summary>
-        public RTFBuilder _udash()
+        public RTFBuilder eudash
         {
-            this.text.Append(@"\uldash0");
-            return this;
+            get
+            {
+                this.text.Append(@"\uldash0");
+                return this;
+            }
         }
 
         /// <summary>
         /// Begin dash dot underline.
         /// </summary>
-        public RTFBuilder udashd()
+        public RTFBuilder udashd
         {
-            this.text.Append(@"\uldashd1");
-            return this;
+            get
+            {
+                this.text.Append(@"\uldashd1");
+                return this;
+            }
         }
 
         /// <summary>
         /// End dash dot underline.
         /// </summary>
-        public RTFBuilder _udashd()
+        public RTFBuilder eudashd
         {
-            this.text.Append(@"\uldashd0");
-            return this;
+            get
+            {
+                this.text.Append(@"\uldashd0");
+                return this;
+            }
         }
 
         #endregion ===================================
@@ -327,57 +433,123 @@ namespace MMG.CustomPresentation.RTF
         #region ==================== FONT COLORS ====================
 
         /// <summary>
+        /// Font color default begins.
+        /// </summary>
+        public RTFBuilder defaultcolor
+        {
+            get
+            {
+                this.text.Append(@"\cf1");
+                return this;
+            }
+        }
+
+        /// <summary>
         /// Font color Red begins.
         /// </summary>
-        public RTFBuilder red()
+        public RTFBuilder red
         {
-            this.text.Append(@"\cf1");
-            return this;
+            get
+            {
+                this.text.Append(@"\cf1");
+                return this;
+            }
         }
 
         /// <summary>
         /// Font color Green begins.
         /// </summary>
-        public RTFBuilder green()
+        public RTFBuilder green
         {
-            this.text.Append(@"\cf2");
-            return this;
+            get
+            {
+                this.text.Append(@"\cf2");
+                return this;
+            }
         }
 
         /// <summary>
         /// Font color Blue begins.
         /// </summary>
-        public RTFBuilder blue()
+        public RTFBuilder blue
         {
-            this.text.Append(@"\cf3");
-            return this;
+            get
+            {
+                this.text.Append(@"\cf3");
+                return this;
+            }
         }
 
         /// <summary>
         /// Font color Yellow begins.
         /// </summary>
-        public RTFBuilder yellow()
+        public RTFBuilder yellow
         {
-            this.text.Append(@"\cf4");
-            return this;
+            get
+            {
+                this.text.Append(@"\cf4");
+                return this;
+            }
         }
 
         /// <summary>
         /// Font color Black begins.
         /// </summary>
-        public RTFBuilder black()
+        public RTFBuilder black
         {
-            this.text.Append(@"\cf5");
-            return this;
+            get
+            {
+                this.text.Append(@"\cf5");
+                return this;
+            }
         }
 
         /// <summary>
         /// Font color White begins.
         /// </summary>
-        public RTFBuilder white()
+        public RTFBuilder white
         {
-            this.text.Append(@"\cf6");
-            return this;
+            get
+            {
+                this.text.Append(@"\cf6");
+                return this;
+            }
+        }
+
+        /// <summary>
+        /// Font color Cyan begins.
+        /// </summary>
+        public RTFBuilder cyan
+        {
+            get
+            {
+                this.text.Append(@"\cf7");
+                return this;
+            }
+        }
+
+        /// <summary>
+        /// Font color magenta begins.
+        /// </summary>
+        public RTFBuilder magenta
+        {
+            get
+            {
+                this.text.Append(@"\cf8");
+                return this;
+            }
+        }
+
+        /// <summary>
+        /// Font color salmon begins.
+        /// </summary>
+        public RTFBuilder salmon
+        {
+            get
+            {
+                this.text.Append(@"\cf9");
+                return this;
+            }
         }
 
         #endregion ===================================
@@ -385,42 +557,39 @@ namespace MMG.CustomPresentation.RTF
         #region ==================== TEXT FLOW ====================
 
         /// <summary>
-        /// Add text to document body.
+        /// Begins a paragraph.
         /// </summary>
-        public RTFBuilder t(string text)
+        public RTFBuilder p
         {
-            this.text.Append(text);
-            return this;
+            get
+            {
+                this.text.Append("\n").Append(@"{\pard");
+                this.text.Append("\n");
+
+                return this;
+            }
         }
 
         /// <summary>
         /// Begins a paragraph.
         /// </summary>
-        public RTFBuilder p()
+        public RTFBuilder pf(TEXTAlign a)
         {
-            return p(TEXTAlign.NONE, 0);
+            return pf(a, 0);
         }
 
         /// <summary>
         /// Begins a paragraph.
         /// </summary>
-        public RTFBuilder p(TEXTAlign a)
+        public RTFBuilder pf(int fontSize)
         {
-            return p(a, 0);
+            return pf(TEXTAlign.NONE, fontSize);
         }
 
         /// <summary>
         /// Begins a paragraph.
         /// </summary>
-        public RTFBuilder p(int fontSize)
-        {
-            return p(TEXTAlign.NONE, fontSize);
-        }
-
-        /// <summary>
-        /// Begins a paragraph.
-        /// </summary>
-        public RTFBuilder p(TEXTAlign a, int fontSize)
+        public RTFBuilder pf(TEXTAlign a, int fontSize)
         {
             this.text.Append("\n").Append(@"{\pard").Append(a);
 
@@ -430,44 +599,101 @@ namespace MMG.CustomPresentation.RTF
             }
 
             this.text.Append("\n");
-            
+
             return this;
         }
 
         /// <summary>
         /// End of paragraph.
         /// </summary>
-        public RTFBuilder _p()
+        public RTFBuilder ep
         {
-            this.text.Append(@"\sb150\par}").Append("\n");
+            get
+            {
+                this.text.Append(@"\sb150\par}").Append("\n");
+                return this;
+            }
+        }
+
+        /// <summary>
+        /// Add text to document body. Inserts a space at the end.
+        /// </summary>
+        public RTFBuilder t(string text)
+        {
+            this.text.Append(text).Append(" ");
+            return this;
+        }
+
+        /// <summary>
+        /// Add text to document body. Trim the text.
+        /// </summary>
+        public RTFBuilder ttrim(string text)
+        {
+            this.text.Append(text.Trim());
+            return this;
+        }
+
+        /// <summary>
+        /// Add text to document body. Trim the start of text.
+        /// </summary>
+        public RTFBuilder ttrims(string text)
+        {
+            this.text.Append(text.TrimStart());
+            return this;
+        }
+
+        /// <summary>
+        /// Add text to document body. Trim the end of text.
+        /// </summary>
+        public RTFBuilder ttrime(string text)
+        {
+            this.text.Append(text.TrimEnd());
+            return this;
+        }
+
+        /// <summary>
+        /// Format the text as software code.
+        /// </summary>
+        public RTFBuilder code(string text)
+        {
+            this.text.Append(@"{\f1 ").Append(text.TrimEnd()).Append(@" }");
             return this;
         }
 
         /// <summary>
         /// Insert a tab to text.
         /// </summary>
-        public RTFBuilder tab()
+        public RTFBuilder tab
         {
-            this.text.Append(@"\tab ");
-            return this;
+            get
+            {
+                this.text.Append(@"\tab ");
+                return this;
+            }
         }
 
         /// <summary>
         /// An HTML like line break.
         /// </summary>
-        public RTFBuilder br()
+        public RTFBuilder br
         {
-            this.text.Append(@"\line").Append("\n");
-            return this;
+            get
+            {
+                this.text.Append(@"\line").Append("\n");
+                return this;
+            }
         }
 
         /// <summary>
         /// Page break.
         /// </summary>
-        public RTFBuilder pgbr()
+        public RTFBuilder pgbr
         {
-            this.text.Append(@"\page").Append("\n");
-            return this;
+            get
+            {
+                this.text.Append(@"\page").Append("\n");
+                return this;
+            }
         }
 
         #endregion ===================================
@@ -476,37 +702,49 @@ namespace MMG.CustomPresentation.RTF
         /// <summary>
         /// Open an unordered list./>
         /// </summary>
-        public RTFBuilder ul()
+        public RTFBuilder ul
         {
-            this.text.Append("\n").Append(@"\par{\pard{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sb150\sl276\slmult1").Append("\n");
-            return this;
+            get
+            {
+                this.text.Append("\n").Append(@"\par{\pard{\*\pn\pnlvlblt\pnf1\pnindent0{\pntxtb\'B7}}\fi-360\li720\sb150\sl276\slmult1").Append("\n");
+                return this;
+            }
         }
 
         /// <summary>
         /// Start a paragraph in an unordered list./>
         /// </summary>
-        public RTFBuilder li()
+        public RTFBuilder li
         {
-            this.text.Append(@"{\pntext\'B7}");
-            return this;
+            get
+            {
+                this.text.Append(@"{\pntext\'B7}");
+                return this;
+            }
         }
 
         /// <summary>
         /// Ends a paragraph in an unordered list./>
         /// </summary>
-        public RTFBuilder _li()
+        public RTFBuilder eli
         {
-            this.text.Append(@"\par");
-            return this;
+            get
+            {
+                this.text.Append(@"\par");
+                return this;
+            }
         }
 
         /// <summary>
         /// Close an unordered list./>
         /// </summary>
-        public RTFBuilder _ul()
+        public RTFBuilder eul
         {
-            this.text.Append("\n").Append(@"}");
-            return this;
+            get
+            {
+                this.text.Append("\n").Append(@"}");
+                return this;
+            }
         }
 
         #endregion ===================================
@@ -534,7 +772,7 @@ namespace MMG.CustomPresentation.RTF
                         + @"\clbrdrb" + b
                         + @"\clbrdrr" + b;
                 }
-                
+
                 int width = (int)Math.Round(item * MeasurementConstants.TWIPS_PER_MILIMETER);
                 this.rowHeader += a + @"\cellx" + width;
             }
@@ -548,42 +786,54 @@ namespace MMG.CustomPresentation.RTF
         /// <summary>
         /// Ends a table.
         /// </summary>
-        public RTFBuilder _table()
+        public RTFBuilder etable
         {
-            this.text.Append(@"}").Append("\n");
-            return this;
+            get
+            {
+                this.text.Append(@"}").Append("\n");
+                return this;
+            }
         }
 
         /// <summary>
         /// Starts a table row.
         /// </summary>
-        public RTFBuilder tr()
+        public RTFBuilder tr
         {
-            this.text.Append(@"\trowd\trgaph180 ").Append("\n").Append(this.rowHeader).Append("\n");
-            return this;
+            get
+            {
+                this.text.Append(@"\trowd\trgaph180 ").Append("\n").Append(this.rowHeader).Append("\n");
+                return this;
+            }
         }
 
         /// <summary>
         /// Ends a table row.
         /// </summary>
-        public RTFBuilder _tr()
+        public RTFBuilder etr
         {
-            this.text.Append(@"\row").Append("\n");
-            return this;
+            get
+            {
+                this.text.Append(@"\row").Append("\n");
+                return this;
+            }
         }
 
         /// <summary>
         /// Starts a table cell.
         /// </summary>
-        public RTFBuilder td()
+        public RTFBuilder td
         {
-            return td(TEXTAlign.NONE);
+            get
+            {
+                return tdf(TEXTAlign.NONE);
+            }
         }
 
         /// <summary>
         /// Starts a table cell.
         /// </summary>
-        public RTFBuilder td(TEXTAlign a)
+        public RTFBuilder tdf(TEXTAlign a)
         {
             this.text.Append(@"\pard\intbl").Append(a);
             return this;
@@ -592,20 +842,45 @@ namespace MMG.CustomPresentation.RTF
         /// <summary>
         /// Ends a table cell.
         /// </summary>
-        public RTFBuilder _td()
+        public RTFBuilder etd
         {
-            this.text.Append(@"\cell");
-            return this;
+            get
+            {
+                this.text.Append(@"\cell");
+                return this;
+            }
         }
 
         #endregion ===================================
 
+
+        /// <summary>
+        /// Do nothing. Only ends a partial command block.
+        /// </summary>
+        public void pack()
+        {
+        }
+
         /// <summary>
         /// A hard line break just to format text source code.
         /// </summary>
-        public RTFBuilder hardbr()
+        public RTFBuilder hardbreak()
         {
             this.text.Append("\n");
+            return this;
+        }
+
+        /// <summary>
+        /// Create an hyperlink.
+        /// </summary>
+        public RTFBuilder href(string url, string caption)
+        {
+            this.text.Append("{\\field{\\*\\fldinst HYPERLINK \"").Append(url)
+                .Append("\"}{\\fldrslt {\\ul ").Append(caption).Append(@"}}}");
+
+            // A workaround due to a richtextbox bug
+            this.linksCharsCount += 2 * url.Length;
+
             return this;
         }
 
@@ -617,6 +892,23 @@ namespace MMG.CustomPresentation.RTF
         public string GetRTFString()
         {
             return this.header.GetRTFString() + this.text.ToString() + "}";
+        }
+
+        public DialogResult Show()
+        {
+            if (this.showMessage != null)
+            {
+                // A workaround due to a richtextbox bug
+                this.text.Append("".PadRight(this.linksCharsCount));
+                
+                return this.showMessage(GetRTFString());
+            }
+            else
+            {
+                Console.WriteLine(GetRTFString());
+            }
+
+            return DialogResult.Cancel;
         }
     }
 }

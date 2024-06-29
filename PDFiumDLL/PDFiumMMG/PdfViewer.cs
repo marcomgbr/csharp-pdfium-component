@@ -9,6 +9,8 @@ using ApplicationInfo;
 using System.Collections.Generic;
 using System.Linq;
 using PDFiumMMG;
+using MMG.Forms;
+using System.Drawing;
 
 namespace PdfiumViewer
 {
@@ -329,7 +331,7 @@ namespace PdfiumViewer
                 }
                 else
                 {
-                    MessageBox.Show("Invalid zoom factor number");
+                    MsgBox.Format(SystemIcons.Error).t("Invalid").salmon.t("Zoom Factor").white.t("number.").Show();
                 }
             }
         }
@@ -368,13 +370,8 @@ namespace PdfiumViewer
                     }
                     catch
                     {
-                        MessageBox.Show(
-                            FindForm(),
-                            Properties.Resources.SaveAsFailedText,
-                            Properties.Resources.SaveAsFailedTitle,
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error
-                        );
+                        MsgBox.Format(Properties.Resources.SaveAsFailedTitle, SystemIcons.Error)
+                            .t(Properties.Resources.SaveAsFailedText).Show();
                     }
                 }
             }
@@ -499,7 +496,8 @@ namespace PdfiumViewer
                 }
                 else
                 {
-                    MessageBox.Show(this, "Invalid page number", Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MsgBox.Format("Error", SystemIcons.Error).t("Invalid").salmon.t("page number").Show();
+
                 }
             }
         }
@@ -531,7 +529,7 @@ namespace PdfiumViewer
             }
             else
             {
-                MessageBox.Show("This document could't be open. It will be deleted from de recent documents list.");
+                MsgBox.Format(SystemIcons.Error).t("This document couldn't be open. It will be deleted from de recent documents list.").Show();
                 file_recentDocuments.DropDownItems.Remove(menuItem);
             }
         }
@@ -566,7 +564,7 @@ namespace PdfiumViewer
             }
             catch (Exception ex)
             {
-                MessageBox.Show(this, ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MsgBox.Format("Error", SystemIcons.Error).t(ex.Message).Show();
             }
         }
 
@@ -602,7 +600,8 @@ namespace PdfiumViewer
                 }
                 catch(Exception ex)
                 {
-                    MessageBox.Show("There is no installed printer");
+                    MsgBox.Format(SystemIcons.Error).t("There is no installed printer").Show();
+                    Console.WriteLine(ex.ToString());
                 }
             }
         }
@@ -633,7 +632,7 @@ namespace PdfiumViewer
             sz.AppendLine($"Create Date: {info.CreationDate}");
             sz.AppendLine($"Modified Date: {info.ModificationDate}");
 
-            MessageBox.Show(sz.ToString(), "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MsgBox.Format().t(sz.ToString()).Show();
         }
 
         private void edit_RenderToBitmapsMenu_Click(object sender, EventArgs e)

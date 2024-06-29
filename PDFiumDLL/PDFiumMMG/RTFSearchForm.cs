@@ -60,5 +60,13 @@ namespace PdfiumViewer
 
             return (handled || base.ProcessCmdKey(ref msg, keyData));
         }
+
+        private void RTFSearchForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Escape))
+            {
+                Close();
+            }
+        }
     }
 }

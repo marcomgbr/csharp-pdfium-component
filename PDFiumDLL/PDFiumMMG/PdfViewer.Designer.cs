@@ -69,8 +69,6 @@ namespace PdfiumViewer
             this.z_02 = new System.Windows.Forms.ToolStripSeparator();
             this.file_saveDocumentAs = new System.Windows.Forms.ToolStripMenuItem();
             this.z_03 = new System.Windows.Forms.ToolStripSeparator();
-            this.file_recentFiles = new System.Windows.Forms.ToolStripMenuItem();
-            this.z_04 = new System.Windows.Forms.ToolStripSeparator();
             this.file_documentProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.z_05 = new System.Windows.Forms.ToolStripSeparator();
             this.file_exit = new System.Windows.Forms.ToolStripMenuItem();
@@ -338,8 +336,6 @@ namespace PdfiumViewer
             this.z_02,
             this.file_saveDocumentAs,
             this.z_03,
-            this.file_recentFiles,
-            this.z_04,
             this.file_documentProperties,
             this.z_05,
             this.file_exit,
@@ -392,16 +388,6 @@ namespace PdfiumViewer
             // 
             this.z_03.Name = "z_03";
             resources.ApplyResources(this.z_03, "z_03");
-            // 
-            // file_recentFiles
-            // 
-            this.file_recentFiles.Name = "file_recentFiles";
-            resources.ApplyResources(this.file_recentFiles, "file_recentFiles");
-            // 
-            // z_04
-            // 
-            this.z_04.Name = "z_04";
-            resources.ApplyResources(this.z_04, "z_04");
             // 
             // file_documentProperties
             // 
@@ -738,14 +724,12 @@ namespace PdfiumViewer
         private System.Windows.Forms.ToolStripMenuItem edit_rotateCurrentPage_180;
         private System.Windows.Forms.ToolStripMenuItem edit_rotateCurrentPage_270;
         private System.Windows.Forms.ToolStripMenuItem file_saveDocumentAs;
-        private System.Windows.Forms.ToolStripSeparator z_04;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ToolStrip alertStrip;
         private System.Windows.Forms.ToolStripLabel alertTextStripLabel;
         private System.Windows.Forms.ToolStripButton alertIconStripButton;
         private System.Windows.Forms.ToolStripLabel alertTitleStripLabel;
         private System.Windows.Forms.ToolStripButton alertCloseStripButton;
-        private System.Windows.Forms.ToolStripMenuItem file_recentFiles;
         private System.Windows.Forms.ToolStripSeparator z_05;
         private System.Windows.Forms.ToolStripMenuItem viewMenu;
         private System.Windows.Forms.ToolStripMenuItem aboutMenu;

@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using MMG.FormDecoration;
+using MMG.Forms;
 
 namespace PdfiumViewer
 {
@@ -26,26 +27,26 @@ namespace PdfiumViewer
 
             searchManager = new PdfSearchManager(renderer);
 
-            matchCaseButton.Checked = searchManager.MatchCase;
-            matchWholeWordButton.Checked = searchManager.MatchWholeWord;
-            highlightAllMatchesButton.Checked = searchManager.HighlightAllMatches;
+            matchCaseCheck.Checked = searchManager.MatchCase;
+            matchWholeWordCheck.Checked = searchManager.MatchWholeWord;
+            highlightAllMatchesCheck.Checked = searchManager.HighlightAllMatches;
         }
 
         private void _matchCase_CheckedChanged(object sender, EventArgs e)
         {
             findDirty = true;
-            searchManager.MatchCase = matchCaseButton.Checked;
+            searchManager.MatchCase = matchCaseCheck.Checked;
         }
 
         private void _matchWholeWord_CheckedChanged(object sender, EventArgs e)
         {
             findDirty = true;
-            searchManager.MatchWholeWord = matchWholeWordButton.Checked;
+            searchManager.MatchWholeWord = matchWholeWordCheck.Checked;
         }
 
         private void _highlightAll_CheckedChanged(object sender, EventArgs e)
         {
-            searchManager.HighlightAllMatches = highlightAllMatchesButton.Checked;
+            searchManager.HighlightAllMatches = highlightAllMatchesCheck.Checked;
         }
 
         private void _find_TextChanged(object sender, EventArgs e)
@@ -71,13 +72,15 @@ namespace PdfiumViewer
 
                 if (!searchManager.Search(findTextBox.Text))
                 {
-                    MessageBox.Show(this, "No matches found.");
+                    MsgBox.Show("No matches found.");
                     return;
                 }
             }
 
             if (!searchManager.FindNext(forward))
-                MessageBox.Show(this, "Find reached the starting point of the search.");
+            {
+                MsgBox.Show("Find reached the starting point of the search.");
+            }
         }
 
         private void SearchForm_Shown(object sender, EventArgs e)
@@ -98,6 +101,14 @@ namespace PdfiumViewer
             if (e.KeyCode.Equals(Keys.F3))
             {
                 Find(true);
+            }
+        }
+
+        private void PDFSearchForm_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Escape))
+            {
+                Close();
             }
         }
     }

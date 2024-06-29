@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using MMG.FormDecoration;
+using MMG.Forms;
 
 namespace PdfiumViewer
 {
@@ -28,15 +29,15 @@ namespace PdfiumViewer
 
             if (!int.TryParse(_horizontal.Text, out horizontal))
             {
-                MessageBox.Show(this, "Invalid horizontal");
+                MsgBox.Format(SystemIcons.Error).t("Invalid").salmon.t("Pages per row").white.t("value.").Show();
             }
             else if (!int.TryParse(_vertical.Text, out vertical))
             {
-                MessageBox.Show(this, "Invalid vertical");
+                MsgBox.Format(SystemIcons.Error).t("Invalid").salmon.t("Pages per column").white.t("value.").Show();
             }
             else if (!float.TryParse(_margin.Text, out margin))
             {
-                MessageBox.Show(this, "Invalid margin");
+                MsgBox.Format(SystemIcons.Error).t("Invalid").salmon.t("Margin").white.t("value.").Show();
             }
             else
             {

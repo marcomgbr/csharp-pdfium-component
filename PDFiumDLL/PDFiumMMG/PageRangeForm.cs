@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using MMG.FormDecoration;
+using MMG.Forms;
 
 namespace PdfiumViewer
 {
@@ -39,7 +40,7 @@ namespace PdfiumViewer
                 startPage > endPage
             )
             {
-                MessageBox.Show(this, "Invalid start/end page");
+                MsgBox.Format(SystemIcons.Error).t("Invalid").salmon.t("Start/End").white.t("page.").Show();
             }
             else
             {
