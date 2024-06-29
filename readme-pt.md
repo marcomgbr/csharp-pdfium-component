@@ -5,17 +5,22 @@ By [Marco Aurélio Oliveira](https://maurelio.com.br)
 
 Derivado de https://github.com/pvginkel/PdfiumViewer
 
-Este projeto não tem nada de especial. Eu apenas queria ter um leitor de arquivos PDF RÁPIDO E SIMPLES. Então, modifiquei o projeto PdfiumViewer para atender às minhas necessidades práticas e de usabilidade.
+Este projeto não tem nada de especial. Eu apenas queria ter um leitor de arquivos PDF RÁPIDO E SIMPLES, o que é difícil de encontrar hoje em dia.
+
+Além disso, eu estava mesmo precisando treinar um pouco de *frontend*, componentização, etc.
 
 Fique à vontade para deixá-lo com a aparência que você quiser.
 
 ## Resumo das Modificações Realizadas
-- As funcionalidades da aplicação principal foram transferidas para a DLL. Assim, a quantidade de código que o programador terá que escrever para usar a DLL foi reduzida drasticamente.
+- Transferi as funcionalidades da aplicação principal para a DLL.
+- >*Assim, o componente leitor de PDF ficou muito simples de usar. Basta colocar na tela e escrever umas poucas linhas de código.* 
 - Toda a aparência da aplicação foi modificada, destacando-se:
-  - Remodelagem de todas as telas, com Implementação de herança de formulários, com todos os formulários herdando de 1 único formulário.*
+  - Remodelagem de todas as telas, com Implementação de herança de formulários.
+  >*Quase todos os formulários derivam de 1 único formulário.*
   - Reorganização dos menus e painéis de controle.
   - Novos ícones e facilidades.
   - Mensagens em Rich Text Format (texto formatado).
+  >*Facilitam chamar a atenção do usuário com cores e outras formatações.*
   - Lista de documentos abertos recentemente.
   - Extração e seleção de texto na tela.
   - Criação de parâmetros de permissões de uso.
