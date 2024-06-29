@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ###### [<img src="/imgs/flag-br.png" alt="Portugu&ecirc;s">](readme-pt.md "Versão em Português")
+=======
+###### [<img src="flag-br.png" alt="Portugu&ecirc;s">](readme-pt.md "Versão em Português")
+>>>>>>> b0a31e7 (minor changes)
 # Just Another PDF Reader
 
 By [Marco Aurélio Oliveira](https://maurelio.com.br)

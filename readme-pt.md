@@ -1,4 +1,4 @@
-###### [<img src="imgs/flag-us.png" alt="English">](readme.md "English Version")
+###### [<img src="flag-us.png" alt="English">](readme.md "English Version")
 # Apenas mais um PDF Reader
 
 By [Marco Aurélio Oliveira](https://maurelio.com.br)
