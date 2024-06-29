@@ -33,6 +33,9 @@
     <ApplicationIcon>eddie64.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CustomPresentation">
+      <HintPath>lib\CustomPresentation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -63,7 +66,6 @@
     <Compile Include="CleanDarkForm.Designer.cs">
       <DependentUpon>CleanDarkForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConstantOfTypeString.cs" />
     <Compile Include="CustomScrollControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -86,12 +88,6 @@
       <DependentUpon>ManyPagesToOneForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MouseWheelMode.cs" />
-    <Compile Include="MsgBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MsgBox.designer.cs">
-      <DependentUpon>MsgBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="NativeMethods.cs" />
     <Compile Include="NativeMethods.Pdfium.cs" />
     <Compile Include="NativeTreeView.cs">
@@ -162,10 +158,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="RotationStack.cs" />
-    <Compile Include="RTFBuilder.cs" />
-    <Compile Include="RTFConstants.cs" />
-    <Compile Include="RTFHeader.cs" />
-    <Compile Include="RTFPage.cs" />
     <Compile Include="RTFSearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,9 +245,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManyPagesToOneForm.resx">
       <DependentUpon>ManyPagesToOneForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MsgBox.resx">
-      <DependentUpon>MsgBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PageRangeForm.resx">
       <DependentUpon>PageRangeForm.cs</DependentUpon>

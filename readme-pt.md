@@ -5,19 +5,17 @@ By [Marco Aurélio Oliveira](https://maurelio.com.br)
 
 Derivado de https://github.com/pvginkel/PdfiumViewer
 
-Este projeto não tem nada de especial. Eu apenas queria ter um leitor de arquivos PDF RÁPIDO E SIMPLES. Então modifiquei o projeto do van Ginkel e adicionei algumas coisas que eu queria, além de modificar a interface de usuário, também ao meu gosto.
+Este projeto não tem nada de especial. Eu apenas queria ter um leitor de arquivos PDF RÁPIDO E SIMPLES. Então, modifiquei o projeto PdfiumViewer para atender às minhas necessidades práticas e de usabilidade.
 
 Fique à vontade para deixá-lo com a aparência que você quiser.
 
 ## Resumo das Modificações Realizadas
-- Retiradas as funcionalidades da aplicação principal, incluindo-as na DLL. 
->*Isso reduz drasticamente a quantidade de código que o programador tem que escrever para usar o componente.*
-- Modificada toda a aparência da aplicação, incluindo:
-  - Novas telas.
-  >*Implementação de herança de formulários.*
+- As funcionalidades da aplicação principal foram transferidas para a DLL. Assim, a quantidade de código que o programador terá que escrever para usar a DLL foi reduzida drasticamente.
+- Toda a aparência da aplicação foi modificada, destacando-se:
+  - Remodelagem de todas as telas, com Implementação de herança de formulários, com todos os formulários herdando de 1 único formulário.*
   - Reorganização dos menus e painéis de controle.
-  - Novos ícones e atalhos.
-  - Message Dialogs em Rich Text Format (texto formatado).
+  - Novos ícones e facilidades.
+  - Mensagens em Rich Text Format (texto formatado).
   - Lista de documentos abertos recentemente.
   - Extração e seleção de texto na tela.
   - Criação de parâmetros de permissões de uso.
@@ -28,8 +26,8 @@ Fique à vontade para deixá-lo com a aparência que você quiser.
 2. Escolha um par de arquivos `pdfium.dll` e `PDFiumMMG.dll`, a seu gosto;
 >*Lembre-se de que podem ser "Release" ou "Debug", de 32-bit ou 64-bit.*
 3. Adicione `pdfium.dll` ao projeto clicando com o botão direito sobre o projeto na janela `Solution Explorer` e escolhendo `Add > Existent Item`.
->*O arquivo será copiado para a pasta raiz do projeto. Essa é a forma mais prática de fazer o Visual Studio copiá-lo para a mesma pasta que o executável quando o aplicativo for compilado.*
-4. Na janela `Solution Explorer` sobre `pdfium.dll`;
+>*O arquivo será copiado para a pasta raiz do projeto. Essa é a forma mais prática de fazer o Visual Studio copiá-lo para a mesma pasta em que o executável será criado quando a aplicação for compilada.*
+4. Na janela `Solution Explorer`, clique com o botão esquerdo sobre `pdfium.dll`;
 >*A janela `Propriedades` irá exibir os atributos do arquivo.*
 5. Defina a propriedade `Copy to Output Directory` como `Copy always`;
 6. Na janela `Solution Explorer`, clique em `References` ou `Dependencies` com o botão direito do mouse e selecione `Add > Reference`;
@@ -103,3 +101,48 @@ public partial class MainForm : Form
 ```
 
 >*Grave o arquivo de inicilização no formato que você preferir. Neste exemplo eu usei XML porque não queria mais DLLs incluídas no projeto para utilizar JSON.*
+
+## Recurso Adicional: Mensagens em Formato RTF
+Foi desenvolvido um formatador de Rich Text Format (Formato de Texto Rico) e associado a um novo formulário de mensagens que visa substituir o MessageBox padrão do Windows Forms. A implementação tenta imitar ao máximo a sintaxe HTML, como demonstrado a seguir:
+
+### Usando a sintaxe padrão da MessageBox do Windows Forms
+```
+MsgBox.Show("Exibindo MsgBox com sintaxe de MessageBox.");
+```
+![Amostra MsgBox](/imgs/imgbox-01.png "MsgBox com sintaxe de MessageBox")
+
+### Usando o RTF MsgBox
+```
+MsgBox.Format().t("Exibindo MsgBox com formatação").i.t("em itálico").ei.t("para fins de demonstração.").Show();
+```
+![Amostra MsgBox](/imgs/imgbox-02.png "MsgBox com formatação RTF")
+
+### Formatando textos complexos
+#### Parágrafos, atributos de fonte e lista...
+```
+MsgBox.Format()
+    .p.t("O texto a seguir está escrito em").green.i.b.t("verde itálico negrito.").ei.eb
+    .white.t("Repare que a ordem de abertura e fechamento das tags aninhadas não importa.").ep
+
+    .p.t("Você também pode criar listas, como a seguir:").ep
+    .ul
+        .li.t("Primeiro item da lista.").eli
+        .li.t("Segundo item da lista.").eli
+    .eul
+
+    .Show();
+```
+![Amostra MsgBox](/imgs/imgbox-03.png "Parágrafos, cores e lista")
+
+#### Parágrafos, cores, tag "code" e hiperlinks...
+```
+MsgBox.Format()
+    .p.t("Você pode incluir links diretamente na string, como https://www.microsoft.com, mas eles ficarão com a formatação padrão.")
+    .t("Além disso, o link mais próximo do final do texto pode não funcionar, devido a um bug do RichTextBox.").ep
+
+    .p.t("Usando a função").yellow.code("href").white.t(" você pode formatar o link como a seguir, em")
+    .cyan.href("https://www.microsoft.com/", "Cyan Microsoft").white.t(", ou como").salmon.i.href("https://www.google.com", "Salmon Italic Google").ei.white.ep
+
+    .Show();
+```
+![Amostra MsgBox](/imgs/imgbox-04.png "Parágrafos, cores e hiperlinks")
