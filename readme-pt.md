@@ -171,3 +171,5 @@ Acima da versão 4.6 do .NET Framework o componente RichTextBox não gera o even
 Para o *link* funcionar é preciso haver um certo número de caracteres após o fim do *link*. Este número de caracteres é a soma do total de caracteres de cada link existente no texto. (acreditem, eu testei)
 
 Portanto, a cada *link* inserido com `href`, o RTFBuilder adiciona o número de caracteres a um contador. Ao exibir a mensagem, MsgBox lê esse contador e insere espaços em branco ao final da mensagem, se ela contiver algum *hiperlink*.
+
+Veja: [Some hyperlinks don't trigger the LinkClicked event](https://stackoverflow.com/questions/56936777/some-hyperlinks-dont-trigger-the-linkclicked-event-when-loading-a-file-into-ric/56938772#56938772)

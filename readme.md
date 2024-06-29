@@ -171,3 +171,5 @@ Above version 4.6 of the .NET Framework, the RichTextBox component does not gene
 For *link* to work there must be a certain number of characters after the end of *link*. This number of characters is the sum of the total characters of each link in the text. (believe me, I tested it)
 
 Therefore, for each *link* inserted with `href`, RTFBuilder adds the number of characters to a counter. When displaying the message, MsgBox reads this counter and inserts blanks at the end of the message if it contains any *hyperlinks*.
+
+See: [Some hyperlinks don't trigger the LinkClicked event](https://stackoverflow.com/questions/56936777/some-hyperlinks-dont-trigger-the-linkclicked-event-when-loading-a-file-into-ric/56938772#56938772)
