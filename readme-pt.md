@@ -21,13 +21,13 @@ Fique à vontade para deixá-lo com a aparência que você quiser.
   - Mensagens em Rich Text Format (texto formatado).
   >*Facilitam chamar a atenção do usuário com cores e outras formatações.*
   - Lista de documentos abertos recentemente.
-  - Extração e seleção de texto na tela.
+  - Extração e seleção de texto com um click na tela (Ctrl+Click).
   - Criação de parâmetros de permissões de uso.
   >*O programador define quais comandos estarão habilitados para o usuário.*
 
 ## Usando o Componente em seu Aplicativo
 1. Crie um novo projeto Windows Forms;
-2. Escolha um par de arquivos `pdfium.dll` e `PDFiumMMG.dll`, a seu gosto;
+2. No projeto da DLL, escolha um os arquivos `pdfium.dll` e `PDFiumMMG.dll` mais adequados ao seu projeto;
 >*Lembre-se de que podem ser "Release" ou "Debug", de 32-bit ou 64-bit.*
 3. Adicione `pdfium.dll` ao projeto clicando com o botão direito sobre o projeto na janela `Solution Explorer` e escolhendo `Add > Existent Item`.
 >*O arquivo será copiado para a pasta raiz do projeto. Essa é a forma mais prática de fazer o Visual Studio copiá-lo para a mesma pasta em que o executável será criado quando a aplicação for compilada.*
@@ -66,7 +66,7 @@ PDFPermissions permissions = new PDFPermissions
     EditEnabled = true
 };
 ```
-### Adicionar função de callback
+### Adicionar função de callback do título
 ```
 Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Viewer";
 pdfViewer.Init(permissions, setDocumentName);
@@ -87,7 +87,7 @@ else
 }
 pdfViewer.IniFile = iniFile;
 ```
-### Salvar arquivo de inicialização
+### Ao fechar o aplicativo, salvar arquivo de inicialização
 ```
 IniFile iniFile = this.pdfViewer.IniFile;
 StreamWriter xmlStream = new StreamWriter(this.iniFilePath);
@@ -97,22 +97,24 @@ xmlStream.Close();
 ```
 >*Grave o arquivo de inicilização no formato que você preferir. Neste exemplo eu usei XML porque não queria mais DLLs incluídas no projeto para utilizar JSON.*
 
-## Recurso Adicional: Mensagens em Formato RTF
-Desenvolvi um formatador de Rich Text Format (Formato de Texto Rico) para usar com um novo formulário de mensagens que visa substituir o MessageBox padrão do Windows Forms.
+![Amostra da Janela principal](/imgs/main-window.png "Janela principal")
 
-A implementação busca reproduzir a sintaxe HTML, que é bem mais conhecida do que RTF, como demonstrado a seguir:
+## Recurso Adicional: Mensagens em Formato RTF
+Desenvolvi um gerador de Rich Text Format (Formato de Texto Rico) para usar em um novo formulário de mensagens criado para substituir o MessageBox padrão do Windows Forms.
+
+A implementação busca aproximar-se da sintaxe HTML, que é bem mais conhecida do que RTF, como demonstrado a seguir:
 
 ### Usando a sintaxe padrão da MessageBox do Windows Forms
 ```
-MsgBox.Show("Exibindo MsgBox com sintaxe de MessageBox.");
+MsgBox.Show("Exibindo texto não formatado usando MsgBox, mas com sintaxe de MessageBox.");
 ```
-![Amostra MsgBox](/imgs/msgbox-01.png "MsgBox com sintaxe de MessageBox")
+![Amostra MsgBox](/imgs/pt_BR/msgbox-01.png "MsgBox com sintaxe de MessageBox")
 
 ### Usando o RTF MsgBox
 ```
 MsgBox.Format().t("Exibindo MsgBox com formatação").i.t("em itálico").ei.t("para fins de demonstração.").Show();
 ```
-![Amostra MsgBox](/imgs/msgbox-02.png "MsgBox com formatação RTF")
+![Amostra MsgBox](/imgs/pt_BR/msgbox-02.png "MsgBox com formatação RTF")
 
 ### Formatando textos complexos
 #### Parágrafos, atributos de fonte e lista...
@@ -129,7 +131,7 @@ MsgBox.Format()
 
     .Show();
 ```
-![Amostra MsgBox](/imgs/msgbox-03.png "Parágrafos, cores e lista")
+![Amostra MsgBox](/imgs/pt_BR/msgbox-03.png "Parágrafos, cores e lista")
 
 #### Parágrafos, cores, tag "code" e hiperlinks...
 ```
@@ -142,11 +144,13 @@ MsgBox.Format()
 
     .Show();
 ```
-![Amostra MsgBox](/imgs/msgbox-04.png "Parágrafos, cores e hiperlinks")
+![Amostra MsgBox](/imgs/pt_BR/msgbox-04.png "Parágrafos, cores e hiperlinks")
 ### Observações
 #### Fontes e cores
-O formato RTF não é exatamente equivalente ao HTML. Portanto, a API criada tem funções diferentes e alguns truques, como:
-- O header do arquivo RTF já vem pré-definido na API. Coisas como tabelas de cores e fontes não podem ser modificadas.
+O formato RTF não é exatamente equivalente ao HTML. Portanto, a API RTF tem aspectos ligeiramente diferentes e algumas limitações, como:
+- Nem todas as tags HTML existem na API.
+- Não é possível usar CSS.
+- O header do arquivo RTF já vem pré-definido na API, portanto coisas como tabelas de cores/fontes não podem ser modificadas.
   - São 3 fontes disponíveis:
     - Sem serifa: Helvetica
     - Com serifa: Times
