@@ -109,13 +109,13 @@ Foi desenvolvido um formatador de Rich Text Format (Formato de Texto Rico) e ass
 ```
 MsgBox.Show("Exibindo MsgBox com sintaxe de MessageBox.");
 ```
-![Amostra MsgBox](/imgs/imgbox-01.png "MsgBox com sintaxe de MessageBox")
+![Amostra MsgBox](/imgs/msgbox-01.png "MsgBox com sintaxe de MessageBox")
 
 ### Usando o RTF MsgBox
 ```
 MsgBox.Format().t("Exibindo MsgBox com formatação").i.t("em itálico").ei.t("para fins de demonstração.").Show();
 ```
-![Amostra MsgBox](/imgs/imgbox-02.png "MsgBox com formatação RTF")
+![Amostra MsgBox](/imgs/msgbox-02.png "MsgBox com formatação RTF")
 
 ### Formatando textos complexos
 #### Parágrafos, atributos de fonte e lista...
@@ -132,7 +132,7 @@ MsgBox.Format()
 
     .Show();
 ```
-![Amostra MsgBox](/imgs/imgbox-03.png "Parágrafos, cores e lista")
+![Amostra MsgBox](/imgs/msgbox-03.png "Parágrafos, cores e lista")
 
 #### Parágrafos, cores, tag "code" e hiperlinks...
 ```
@@ -145,4 +145,4 @@ MsgBox.Format()
 
     .Show();
 ```
-![Amostra MsgBox](/imgs/imgbox-04.png "Parágrafos, cores e hiperlinks")
+![Amostra MsgBox](/imgs/msgbox-04.png "Parágrafos, cores e hiperlinks")
