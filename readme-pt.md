@@ -39,72 +39,65 @@ Fique à vontade para deixá-lo com a aparência que você quiser.
 7. Na janela `Reference Manager", clique no botão `Browse`, procure o arquivo `PDFiumMMG.dll`, e selecione este arquivo.
 
 Pronto! O projeto está preparado para executar o PDF Reader, com mais algumas poucas linhas de código, conforme mostrado a seguir:
-
+### Adicionar o componente ao Form
 ```
-public partial class MainForm : Form
+PdfViewer pdfViewer;
+public MainForm()
 {
-    string iniFilePath = Application.UserAppDataPath + @"\MmgPdf.ini";
-    PdfViewer pdfViewer;
-    public MainForm()
-    {
-        InitializeComponent();
+    InitializeComponent();
 
-        pdfViewer = new PdfViewer();
-        pdfViewer.Dock = DockStyle.Fill;
-        Controls.Add(pdfViewer);
-        InitViewer();
-        Disposed += (s, e) => pdfViewer.Document?.Dispose();
-    }
-
-    private void InitViewer()
-    {
-        // Set what is to be displayed to the user
-        PDFPermissions p = new PDFPermissions
-        {
-            MainMenuVisible = true,
-            MainToolBarVisible = true,
-            MainStatusBarVisible = true,
-
-            OpenEnabled = true,
-            SaveEnabled = true,
-            PrintEnabled = true,
-            DocumentPropertiesEnabled = true,
-            EditEnabled = true
-        };
-
-        // Here's a little function pointer to update the title bar
-        Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Viewer";
-        pdfViewer.Init(p, setDocumentName);
-
-        // Here we read the initialization data
-        IniFile iniFile;
-        if (File.Exists(this.iniFilePath))
-        {
-            StreamReader xmlStream = new StreamReader(this.iniFilePath);
-            XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
-            iniFile = (IniFile)serializer.Deserialize(xmlStream);
-            xmlStream.Close();
-        }
-        else
-        {
-            iniFile = new IniFile();
-        }
-        pdfViewer.IniFile = iniFile;
-    }
-
-    private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        IniFile iniFile = this.pdfViewer.IniFile;
-
-        // Here we write the initialization data
-        StreamWriter xmlStream = new StreamWriter(this.iniFilePath);
-        XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
-        serializer.Serialize(xmlStream, iniFile);
-        xmlStream.Close();
-    }
+    pdfViewer = new PdfViewer();
+    pdfViewer.Dock = DockStyle.Fill;
+    Controls.Add(pdfViewer);
+    Disposed += (s, e) => pdfViewer.Document?.Dispose();
 }
 ```
+### Definir as permissões de usuário
+```
+PDFPermissions p = new PDFPermissions
+{
+    MainMenuVisible = true,
+    MainToolBarVisible = true,
+    MainStatusBarVisible = true,
 
+    OpenEnabled = true,
+    SaveEnabled = true,
+    PrintEnabled = true,
+    DocumentPropertiesEnabled = true,
+    EditEnabled = true
+};
+```
+### Adicionar função de callback
+```
+Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Viewer";
+pdfViewer.Init(p, setDocumentName);
+```
+### Ler arquivo de inicialização
+```
+IniFile iniFile;
+if (File.Exists(this.iniFilePath))
+{
+    StreamReader xmlStream = new StreamReader(this.iniFilePath);
+    XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
+    iniFile = (IniFile)serializer.Deserialize(xmlStream);
+    xmlStream.Close();
+}
+else
+{
+    iniFile = new IniFile();
+}
+pdfViewer.IniFile = iniFile;
+```
+### Salvar arquivo de inicialização
+```
+IniFile iniFile = this.pdfViewer.IniFile;
+
+// Here we write the initialization data
+StreamWriter xmlStream = new StreamWriter(this.iniFilePath);
+XmlSerializer serializer = new XmlSerializer(typeof(IniFile));
+serializer.Serialize(xmlStream, iniFile);
+xmlStream.Close();
+```
 >*Grave o arquivo de inicilização no formato que você preferir. Neste exemplo eu usei XML porque não queria mais DLLs incluídas no projeto para utilizar JSON.*
 
 ## Recurso Adicional: Mensagens em Formato RTF
