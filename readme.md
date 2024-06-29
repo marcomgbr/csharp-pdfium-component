@@ -5,6 +5,8 @@ By [Marco Aurélio Oliveira](https://maurelio.com.br)
 
 Derived from https://github.com/pvginkel/PdfiumViewer
 
+![Main window sample](/imgs/main-window.png "Main window")
+
 This project isn’t anything special. I just wanted a FAST AND SIMPLE PDF reader, which is hard to find these days.
 
 Furthermore, I really needed to train a little in *frontend*, componentization, etc.
@@ -96,8 +98,6 @@ serializer.Serialize(xmlStream, iniFile);
 xmlStream.Close();
 ```
 >*Save the initialization file in the format you prefer. In this example I used XML because I didn't want more DLLs included in the project to use JSON.*
-
-![Main window sample](/imgs/main-window.png "Main window")
 
 ## Additional Feature: Messages in RTF Format
 I developed a Rich Text Format generator for use with a new messaging form designed to replace the standard Windows Forms MessageBox.
