@@ -60,12 +60,6 @@
     <Compile Include="BasicRTFViewer.designer.cs">
       <DependentUpon>BasicRTFViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="CleanDarkForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CleanDarkForm.Designer.cs">
-      <DependentUpon>CleanDarkForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="CustomScrollControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -236,9 +230,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BasicRTFViewer.resx">
       <DependentUpon>BasicRTFViewer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CleanDarkForm.resx">
-      <DependentUpon>CleanDarkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ExportBitmapsForm.resx">
       <DependentUpon>ExportBitmapsForm.cs</DependentUpon>

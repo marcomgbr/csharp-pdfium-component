@@ -135,7 +135,7 @@ namespace PdfiumViewer
 
             // ===========================
             // MAIN TOOL BAR =============
-            mainToolBar.Visible = this.permissions.MainMenuVisible;
+            mainToolBar.Visible = this.permissions.MainToolBarVisible;
 
             toggleBookmarksViewButton.Enabled = this.document != null;
 

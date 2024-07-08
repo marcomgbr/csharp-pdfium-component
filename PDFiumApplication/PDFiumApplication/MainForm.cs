@@ -34,7 +34,7 @@ namespace PDFiumApplication
             // Set what is to be displayed to the user
             PDFPermissions p = new PDFPermissions
             {
-                MainMenuVisible = true,
+                MainMenuVisible = false,
                 MainToolBarVisible = true,
                 MainStatusBarVisible = true,
 

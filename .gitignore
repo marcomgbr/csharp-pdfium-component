@@ -11,3 +11,4 @@ packages/
 *.exe
 target/
 obj/
+bin/
