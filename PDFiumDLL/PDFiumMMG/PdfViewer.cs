@@ -622,17 +622,17 @@ namespace PdfiumViewer
         private void file_documentPropertiesMenu_Click(object sender, EventArgs e)
         {
             PdfInformation info = this.Document.GetInformation();
-            StringBuilder sz = new StringBuilder();
-            sz.AppendLine($"Author: {info.Author}");
-            sz.AppendLine($"Creator: {info.Creator}");
-            sz.AppendLine($"Keywords: {info.Keywords}");
-            sz.AppendLine($"Producer: {info.Producer}");
-            sz.AppendLine($"Subject: {info.Subject}");
-            sz.AppendLine($"Title: {info.Title}");
-            sz.AppendLine($"Create Date: {info.CreationDate}");
-            sz.AppendLine($"Modified Date: {info.ModificationDate}");
-
-            MsgBox.Format().t(sz.ToString()).Show();
+   
+            MsgBox.Format()
+            .p.t("Author:").green.t($"{info.Author}").white.ep
+            .p.t("Creator:").green.t($"{info.Creator}").white.ep
+            .p.t("Keywords:").green.t($"{info.Keywords}").white.ep
+            .p.t("Producer:").green.t($"{info.Producer}").white.ep
+            .p.t("Subject:").green.t($"{info.Subject}").white.ep
+            .p.t("Title:").green.t($"{info.Title}").white.ep
+            .p.t("Create Date:").green.t($"{info.CreationDate}").white.ep
+            .p.t("Modified Date:").green.t($"{info.ModificationDate}").white.ep
+            .Show();
         }
 
         private void edit_RenderToBitmapsMenu_Click(object sender, EventArgs e)

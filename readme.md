@@ -1,5 +1,5 @@
 ###### [<img src="flag-br.png" alt="Portugu&ecirc;s">](readme-pt.md "Versão em Português")
-# Just Another PDF Reader
+# Another PDF Reader
 
 By [Marco Aurélio Oliveira](https://maurelio.com.br)
 
@@ -7,9 +7,9 @@ Derived from https://github.com/pvginkel/PdfiumViewer
 
 ![Main window sample](/imgs/main-window.png "Main window")
 
-This project isn’t anything special. I just wanted a FAST AND SIMPLE PDF reader, which is hard to find these days.
+This project started as a quest to create a fast and simple PDF reader, something surprisingly hard to find these days.
 
-Furthermore, I really needed to train a little in *frontend*, componentization, etc.
+Then I found pvginkel/PdfiumViewer project, which met my needs with just a few modifications. However, I ended up making many changes, which I list below.
 
 Feel free to make it look however you want.
 

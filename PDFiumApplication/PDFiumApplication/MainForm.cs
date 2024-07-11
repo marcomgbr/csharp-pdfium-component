@@ -34,7 +34,7 @@ namespace PDFiumApplication
             // Set what is to be displayed to the user
             PDFPermissions p = new PDFPermissions
             {
-                MainMenuVisible = false,
+                MainMenuVisible = true,
                 MainToolBarVisible = true,
                 MainStatusBarVisible = true,
 
@@ -46,7 +46,7 @@ namespace PDFiumApplication
             };
 
             // Here's a little function pointer to update the title bar
-            Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Viewer";
+            Action<string> setDocumentName = (name) => this.Text = name + " - MMG PDF Reader";
             pdfViewer.Init(p, setDocumentName);
 
             // Here we read the initialization data

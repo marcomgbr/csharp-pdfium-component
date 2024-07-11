@@ -7,7 +7,7 @@
     <ProjectGuid>{C122E4FB-4730-41A3-B0B5-4AD35E83E3DB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PDFiumApplication</RootNamespace>
-    <AssemblyName>PDFiumApplication</AssemblyName>
+    <AssemblyName>mmgpdf</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -34,6 +34,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>eddie128.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>PDFiumApplication.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PDFiumMMG">
@@ -95,7 +98,7 @@
   <Target Name="ValidatePackage" BeforeTargets="PreBuildEvent" Condition="'$(Configuration)' == 'Debug'">
     <Exec Command="mvn validate" />
   </Target>
-<!--  <Target Name="InstallPackageRelease" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
+  <!--  <Target Name="InstallPackageRelease" AfterTargets="PostBuildEvent" Condition="'$(Configuration)' == 'Release'">
     <Exec Command="mvn install" />
   </Target>-->
 </Project>
