@@ -1,4 +1,5 @@
 *.suo
+.suo
 *.user
 Thumbs.db
 *.docstates
@@ -8,8 +9,10 @@ Thumbs.db
 packages/
 /.vs
 *.obj
+*.pdb
 *.exe
 *.cache
 target/
+META-INF/
 obj/
 bin/
